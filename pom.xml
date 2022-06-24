@@ -110,6 +110,7 @@
                 <version>2.3.7.RELEASE</version>
                 <configuration>
                     <mainClass>com.guoxi.springdevice.SpringDeviceApplication</mainClass>
+                    <finalName>spring-device</finalName>
                 </configuration>
                 <executions>
                     <execution>
