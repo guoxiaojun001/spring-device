@@ -78,6 +78,17 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- redis依赖commons-pool 这个依赖一定要添加 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -93,6 +104,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>spring-device</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -110,7 +122,6 @@
                 <version>2.3.7.RELEASE</version>
                 <configuration>
                     <mainClass>com.guoxi.springdevice.SpringDeviceApplication</mainClass>
-                    <finalName>spring-device</finalName>
                 </configuration>
                 <executions>
                     <execution>

@@ -1,7 +1,5 @@
 package com.guoxi.springdevice.provider;
 
-import com.guoxi.springdevice.mybatis.entity.UserEntity;
-import com.guoxi.springdevice.service.UserLoginServiceImpl;
 import com.guoxi.springdevice.token.JwtLoginToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.*;

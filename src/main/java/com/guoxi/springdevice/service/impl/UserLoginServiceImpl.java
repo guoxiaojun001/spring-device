@@ -1,4 +1,4 @@
-package com.guoxi.springdevice.service;
+package com.guoxi.springdevice.service.impl;
 
 import com.guoxi.springdevice.Repository.UserRepository;
 import com.guoxi.springdevice.mybatis.entity.UserEntity;

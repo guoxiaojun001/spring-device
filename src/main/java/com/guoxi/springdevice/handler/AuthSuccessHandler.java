@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guoxi.springdevice.constant.ReturnStatus;
 import com.guoxi.springdevice.mybatis.entity.UserEntity;
 import com.guoxi.springdevice.utils.JwtUtils;
+import com.guoxi.springdevice.utils.RedisUtil;
 import com.guoxi.springdevice.utils.ReturnJsonUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -14,7 +16,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 import static com.guoxi.springdevice.utils.JwtUtils.DEFAULT_TOKEN_TIME_MS;
 
@@ -26,7 +27,11 @@ import static com.guoxi.springdevice.utils.JwtUtils.DEFAULT_TOKEN_TIME_MS;
  */
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class AuthSuccessHandler implements AuthenticationSuccessHandler {
+
+    private final RedisUtil redisUtil;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         log.info("授权成功处理类AuthSuccessHandler--->{}", AuthSuccessHandler.class.getName());
@@ -36,6 +41,8 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
         String json = objectMapper.writeValueAsString(jwtUserDetails);
         //签发token
         String jwtToken = JwtUtils.createJwtToken(json, DEFAULT_TOKEN_TIME_MS);
+
+        boolean token = redisUtil.set("token", jwtToken, 60L);
 
         // 设置返回数据格式为 json
         httpServletResponse.setContentType("text/json;charset=utf-8");
