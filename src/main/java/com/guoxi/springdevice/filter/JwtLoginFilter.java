@@ -1,5 +1,6 @@
 package com.guoxi.springdevice.filter;
 
+import com.guoxi.springdevice.constant.RequestParams;
 import com.guoxi.springdevice.token.JwtLoginToken;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,8 +50,8 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
      */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
+        String userName = request.getParameter(RequestParams.USERNAME.getCode());
+        String password = request.getParameter(RequestParams.PASSWORD.getCode());
         //创建未认证的凭证(etAuthenticated(false)),注意此时凭证中的主体principal为用户名
         JwtLoginToken jwtLoginToken = new JwtLoginToken(userName, password);
         //将认证详情(ip,sessionId)写到凭证

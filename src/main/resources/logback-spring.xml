@@ -54,7 +54,7 @@
     </appender>
 
     <!--必填标签，用来指定最基础的日志输出级别-->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE_INFO_LOG" />
         <appender-ref ref="FILE_ERROR_LOG" />
