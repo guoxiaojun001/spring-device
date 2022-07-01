@@ -1,5 +1,6 @@
 package com.guoxi.springdevice.handler;
 
+import com.guoxi.springdevice.constant.RequestParams;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.Authentication;
@@ -23,7 +24,7 @@ public class CustomizeLogoutHandler implements LogoutHandler {
     public void logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) {
         log.info("注销处理类CustomizeLogoutHandler--->{}", CustomizeLogoutHandler.class.getName());
 
-        String headerToken = httpServletRequest.getHeader("Authentication");
+        String headerToken = httpServletRequest.getHeader(RequestParams.AUTHENTICATION.getCode());
 
         log.info("headerToken--->{}", headerToken);
         if (StringUtils.isNotBlank(headerToken)) {

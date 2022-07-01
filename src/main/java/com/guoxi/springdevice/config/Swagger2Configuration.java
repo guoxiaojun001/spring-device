@@ -1,6 +1,7 @@
 package com.guoxi.springdevice.config;
 
 
+import com.guoxi.springdevice.constant.RequestParams;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -31,7 +32,7 @@ public class Swagger2Configuration {
     public Docket createRestApi() {
         ParameterBuilder tokenPar = new ParameterBuilder();
         List<Parameter> params = new ArrayList<Parameter>();
-        tokenPar.name("Authentication").description("令牌").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
+        tokenPar.name(RequestParams.AUTHENTICATION.getCode()).description("令牌").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
         params.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()

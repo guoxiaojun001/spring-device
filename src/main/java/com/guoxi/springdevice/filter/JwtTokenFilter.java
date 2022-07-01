@@ -1,6 +1,7 @@
 package com.guoxi.springdevice.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.guoxi.springdevice.constant.RequestParams;
 import com.guoxi.springdevice.constant.ReturnStatus;
 import com.guoxi.springdevice.mybatis.entity.UserEntity;
 import com.guoxi.springdevice.token.JwtLoginToken;
@@ -28,7 +29,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        String token = httpServletRequest.getHeader("Authentication");
+        String token = httpServletRequest.getHeader(RequestParams.AUTHENTICATION.getCode());
         if (StringUtils.isEmpty(token)) {
             httpServletResponse.setContentType("application/json;charset=UTF-8");
             ReturnJsonUtil<String> jsonResult = new ReturnJsonUtil<>();

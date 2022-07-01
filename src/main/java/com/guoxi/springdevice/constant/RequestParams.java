@@ -11,7 +11,9 @@ public enum RequestParams {
     /**用户名*/
     USERNAME("username","用户名"),
     /**密码*/
-    PASSWORD("password","密码");
+    PASSWORD("password","密码"),
+    /**认证*/
+    AUTHENTICATION("Authentication","密码");
 
     private String code;
 
