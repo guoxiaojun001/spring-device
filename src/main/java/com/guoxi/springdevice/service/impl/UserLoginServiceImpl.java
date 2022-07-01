@@ -26,6 +26,10 @@ public class UserLoginServiceImpl implements UserDetailsService {
         if (userEntity == null) {
             throw new UsernameNotFoundException("用户名不存在");
         }
+
+        //TODO 2、查询用户角色
+        //TODO 3、查询用户权限
+        //TODO 4、加载菜单
         return userEntity;
     }
 }
