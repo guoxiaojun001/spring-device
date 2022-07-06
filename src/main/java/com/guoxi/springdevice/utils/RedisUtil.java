@@ -26,15 +26,13 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class RedisUtil {
-	private StringRedisTemplate redisTemplate;
 
-	public void setRedisTemplate(StringRedisTemplate redisTemplate) {
+	private final StringRedisTemplate redisTemplate;
+
+	public RedisUtil(StringRedisTemplate redisTemplate) {
 		this.redisTemplate = redisTemplate;
 	}
 
-	public StringRedisTemplate getRedisTemplate() {
-		return this.redisTemplate;
-	}
 
 	/** -------------------key相关操作--------------------- */
 
