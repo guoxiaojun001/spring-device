@@ -42,7 +42,7 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
         //签发token
         String jwtToken = JwtUtils.createJwtToken(json, DEFAULT_TOKEN_TIME_MS);
 
-        boolean token = redisUtil.set("token", jwtToken, 60L);
+        redisUtil.set("token",jwtToken);
 
         // 设置返回数据格式为 json
         httpServletResponse.setContentType("text/json;charset=utf-8");
