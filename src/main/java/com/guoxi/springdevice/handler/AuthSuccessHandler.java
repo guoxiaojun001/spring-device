@@ -42,7 +42,8 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
         //签发token
         String jwtToken = JwtUtils.createJwtToken(json, DEFAULT_TOKEN_TIME_MS);
 
-        redisUtil.set("token",jwtToken);
+        //token 默认过期时间一分钟
+        redisUtil.set("token",jwtToken,60);
 
         // 设置返回数据格式为 json
         httpServletResponse.setContentType("text/json;charset=utf-8");
